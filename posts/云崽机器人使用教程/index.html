@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+    <link rel="icon" href="/assets/favicon.png">
+  
+  
+  <title>云崽机器人使用教程 | Chirishio的小站</title>
+  <link rel="canonical" href="https://blog.weiweian.top/posts/%E4%BA%91%E5%B4%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+  <meta name="author" content="Yagi Chirishio" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="教程, 机器人" />
+  
+  <meta name="description" content="这是一篇针对群里的机器人的使用教程，由管理员亲自编写。 指令前缀说明 原神、通用指令以 # 开头 崩坏：星穹铁道以 * 开头 绝区零以 % 开头   一、绑定 UID假设你的 UID 为 123456789，在群内或向机器人私聊发送：  #绑定123456789 或 #星铁绑定123456789  稍后机器人应该会返回一张图片，此时说明绑定成功。  二、更新展柜中角色的面板数据   游戏 指令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="云崽机器人使用教程">
+<meta property="og:url" content="https://blog.weiweian.top/posts/%E4%BA%91%E5%B4%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Chirishio的小站">
+<meta property="og:description" content="这是一篇针对群里的机器人的使用教程，由管理员亲自编写。 指令前缀说明 原神、通用指令以 # 开头 崩坏：星穹铁道以 * 开头 绝区零以 % 开头   一、绑定 UID假设你的 UID 为 123456789，在群内或向机器人私聊发送：  #绑定123456789 或 #星铁绑定123456789  稍后机器人应该会返回一张图片，此时说明绑定成功。  二、更新展柜中角色的面板数据   游戏 指令">
+<meta property="og:locale">
+<meta property="og:image" content="https://blog.weiweian.top/assets/favicon.png">
+<meta property="article:published_time" content="2026-06-18T14:52:56.000Z">
+<meta property="article:modified_time" content="2026-06-19T11:47:07.471Z">
+<meta property="article:author" content="Yagi Chirishio">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="机器人">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.weiweian.top/assets/favicon.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Chirishio的小站" type="application/atom+xml">
+  
+  <!-- JSON-LD 结构化数据 -->
+  
+  
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BlogPosting","headline":"云崽机器人使用教程","description":"这是一篇针对群里的机器人的使用教程，由管理员亲自编写。\n指令前缀说明\n原神、通用指令以 #","image":"https://blog.weiweian.top/assets/logo.jpg","author":{"@type":"Person","name":"Yagi Chirishio"},"publisher":{"@type":"Organization","name":"Chirishio的小站","logo":{"@type":"ImageObject","url":"https://blog.weiweian.top/assets/logo.jpg"}},"datePublished":"2026-06-18T14:52:56.000Z","dateModified":"2026-06-19T11:47:07.471Z","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.weiweian.top/posts/%E4%BA%91%E5%B4%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"}}
+    </script>
+  
+  <!-- 关键 CSS 预加载 -->
+  <link rel="preload" href="/css/kr-core.min.css" as="style" crossorigin>
+  <link rel="preload" href="/css/kr-theme/light.min.css" as="style" crossorigin>
+  <link rel="preload" href="/css/kr-theme/dark.min.css" as="style" crossorigin>
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kr-core.min.css" media="all">
+  <link rel="stylesheet" id="theme-light-css" href="/css/kr-theme/light.min.css" media="all">
+  <link rel="stylesheet" id="theme-dark-css" href="/css/kr-theme/dark.min.css" media="(prefers-color-scheme: dark)">
+  
+    <link rel="stylesheet"  id="highlight-css" href="/css/highlight/highlight.js/night-eighties.min.css" media="print" onload="this.media='all'" onerror="this.media='all'"><noscript><link rel="stylesheet" href="/css/highlight/highlight.js/night-eighties.min.css"></noscript>
+  
+  <script src="/js/kr-theme.min.js"></script>
+  <link rel="stylesheet"  id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="print" onload="this.media='all'" onerror="this.media='all'"><noscript><link rel="stylesheet" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css"></noscript>
+  
+    <link rel="stylesheet"  id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="print" onload="this.media='all'" onerror="this.media='all'"><noscript><link rel="stylesheet" href="/vendors/nprogress@0.2.0/nprogress.css"></noscript>
+  
+  
+    <link rel="stylesheet"  href="/vendors/viewerjs@1.11.6/dist/viewer.min.css" media="print" onload="this.media='all'" onerror="this.media='all'"><noscript><link rel="stylesheet" href="/vendors/viewerjs@1.11.6/dist/viewer.min.css"></noscript>
+  
+  <!-- 预先加载的JS文件 -->
+  
+    <script src="/vendors/qr-code-styling@1.6.0-rc.1/lib/qr-code-styling.js"></script>
+  
+  <!-- 自定义站点横幅和背景 -->
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('https://dev.krt.moe/demo-assets/banner.webp');
+      }
+      html[data-theme="dark"] .kratos-cover.kratos-cover-2 {
+        background-image: url('https://dev.krt.moe/demo-assets/banner_dark.webp');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('https://dev.krt.moe/demo-assets/bg.webp');
+        }
+        html[data-theme="dark"] body.custom-background {
+          background-image: url('https://dev.krt.moe/demo-assets/bg.webp');
+        }
+      }
+    
+    
+      .widget-kratos-about .photo-background {
+        background-image: url('/images/default.webp');
+      }
+      html[data-theme="dark"] .widget-kratos-about .photo-background {
+        background-image: url('/images/default.webp');
+      }
+    
+  </style>
+
+  <!-- 额外的追加注入项 -->
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    <li>
+                                        
+                                            <a href="/">
+                                        
+                                            
+                                                <i class="fa fa-home"></i>
+                                            
+                                            首页
+                                        </a>
+                                        
+                                    </li>
+                                
+                                    <li>
+                                        
+                                            <a href="/archives/">
+                                        
+                                            
+                                                <i class="fa fa-file"></i>
+                                            
+                                            档案馆
+                                        </a>
+                                        
+                                    </li>
+                                
+                                    <li>
+                                        
+                                            <a>
+                                        
+                                            
+                                                <i class="fa fa-link"></i>
+                                            
+                                            链接
+                                        </a>
+                                        
+                                            <ul class="sub-menu">
+                                                
+                                                    <li>
+                                                        <a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">
+                                                            
+                                                                <i class="fa fa-code"></i>
+                                                            
+                                                            代码仓库
+                                                        </a>
+                                                    </li>
+                                                
+                                                    <li>
+                                                        <a target="_blank" rel="noopener" href="https://wiki.krt.moe">
+                                                            
+                                                                <i class="fa fa-book"></i>
+                                                            
+                                                            项目文档
+                                                        </a>
+                                                    </li>
+                                                
+                                            </ul>
+                                        
+                                    </li>
+                                
+                                    <li>
+                                        
+                                            <a href="/linklist-example/">
+                                        
+                                            
+                                                <i class="fa fa-link"></i>
+                                            
+                                            链接列表
+                                        </a>
+                                        
+                                    </li>
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">Chirishio的小站</a></div>
+                    <div id="kratos-nav-toggle-wrapper" class="nav-toggle">
+                        <a id="kratos-nav-toggle" class="kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Chirishio的小站</h2> <br />
+                        <span>一些关于网络知识的分享</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+
+
+        
+
+            
+
+            <section class="kr-main-col col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://blog.weiweian.top/posts/%E4%BA%91%E5%B4%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+    <div class="kratos-hentry kratos-page-inner clearfix">
+        <header class="kratos-page-header">
+            
+                <h1 class="kratos-page-title text-center" itemprop="name headline">云崽机器人使用教程</h1>
+            
+            <ul class="kratos-page-meta text-center">
+                <li><time datetime="2026-06-18T14:52:56.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2026-06-18</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">Yagi Chirishio</span>
+                </li>
+                
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~2.43K
+                        
+                        字
+                    </li>
+                
+                
+                
+            </ul>
+        </header>
+        <div class="kratos-page-content kr-post">
+            
+            
+            
+            <hr />
+            <div itemprop="articleBody"><p>这是一篇针对群里的机器人的使用教程，由管理员亲自编写。</p>
+<h2 id="指令前缀说明"><a href="#指令前缀说明" class="headerlink" title="指令前缀说明"></a>指令前缀说明</h2><ul>
+<li>原神、通用指令以 <code>#</code> 开头</li>
+<li>崩坏：星穹铁道以 <code>*</code> 开头</li>
+<li>绝区零以 <code>%</code> 开头</li>
+</ul>
+<hr>
+<h2 id="一、绑定-UID"><a href="#一、绑定-UID" class="headerlink" title="一、绑定 UID"></a>一、绑定 UID</h2><p>假设你的 UID 为 <code>123456789</code>，在群内或向机器人私聊发送：</p>
+<ul>
+<li><code>#绑定123456789</code></li>
+<li>或 <code>#星铁绑定123456789</code></li>
+</ul>
+<p>稍后机器人应该会返回一张图片，此时说明绑定成功。</p>
+<hr>
+<h2 id="二、更新展柜中角色的面板数据"><a href="#二、更新展柜中角色的面板数据" class="headerlink" title="二、更新展柜中角色的面板数据"></a>二、更新展柜中角色的面板数据</h2><table>
+<thead>
+<tr>
+<th>游戏</th>
+<th>指令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原神</td>
+<td><code>#更新面板</code></td>
+</tr>
+<tr>
+<td>崩坏：星穹铁道</td>
+<td><code>#星铁更新面板</code></td>
+</tr>
+<tr>
+<td>绝区零</td>
+<td><code>%更新展柜面板</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>注意</strong>：更新面板所使用的外部服务由 <a target="_blank" rel="noopener" href="https://enka.network/">Enka</a> 提供，是否更新成功由服务是否正常决定。</p>
+</blockquote>
+<hr>
+<h2 id="三、查看角色的面板数据"><a href="#三、查看角色的面板数据" class="headerlink" title="三、查看角色的面板数据"></a>三、查看角色的面板数据</h2><p>在使用第二点提到的指令后，你可以查看机器人回复的图片上的角色的面板。</p>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>假如你想要查看 <strong>胡桃</strong> 的面板，只需要发送：<br>胡桃面板</p>
+<p>（该指令可不带 <code>#</code>）</p>
+<h3 id="关于角色简称"><a href="#关于角色简称" class="headerlink" title="关于角色简称"></a>关于角色简称</h3><p>部分角色本名较长，机器人支持识别被广泛使用的简称或外号，例如：</p>
+<table>
+<thead>
+<tr>
+<th>本名</th>
+<th>简称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>雷电将军</td>
+<td>雷神</td>
+</tr>
+<tr>
+<td>阿蕾奇诺</td>
+<td>仆人</td>
+</tr>
+<tr>
+<td>茜特菈莉</td>
+<td>奶奶</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="进阶教程（一）——-面板武器变换"><a href="#进阶教程（一）——-面板武器变换" class="headerlink" title="进阶教程（一）—— 面板武器变换"></a>进阶教程（一）—— 面板武器变换</h2><p>以 <strong>哥伦比娅</strong> 为例：</p>
+<ul>
+<li>假如你的少女目前是一命，你想知道二命的提升效果有多大，可以使用命令：</li>
+</ul>
+<p>#少女面板换二命</p>
+<ul>
+<li>如果你使用的武器不是专武，想知道带上专武有多大的提升，可以使用：</li>
+</ul>
+<p>#少女面板换专武</p>
+<p>此命令也可用于更换任意该角色可佩戴的武器。</p>
+<p>以 <strong>芙宁娜</strong> 为例，你想看看她带上神里绫人的专武「波乱月白经津」，但武器名字太难记，可以使用：<br>#水神面板换绫人专武</p>
+<hr>
+<h2 id="进阶教程（二）——-面板圣遗物变换"><a href="#进阶教程（二）——-面板圣遗物变换" class="headerlink" title="进阶教程（二）—— 面板圣遗物变换"></a>进阶教程（二）—— 面板圣遗物变换</h2><p>假设你的 UID 为 <code>123456789</code>，你正在查看你 <strong>丝柯克</strong> 的圣遗物，你对羽毛的词条不够满意。</p>
+<p>正好看到了一位群友的丝柯克面板（UID 为 <code>987654321</code>），你注意到 TA 的羽毛词条更好，想知道如果自己用那个羽毛会是什么效果：<br>#丝柯克面板换987654321丝柯克羽毛</p>
+<blockquote>
+<p><strong>公式总结</strong>：<code>#角色名称 面板换 目标uid 角色名称 圣遗物位置</code></p>
+</blockquote>
+<hr>
+<h2 id="四、点赞"><a href="#四、点赞" class="headerlink" title="四、点赞"></a>四、点赞</h2><p>在群里发送以下指令均可触发机器人的点赞功能：</p>
+<ul>
+<li><code>赞我</code></li>
+<li><code>点赞</code></li>
+</ul>
+<hr>
+<h2 id="各插件的详细功能介绍"><a href="#各插件的详细功能介绍" class="headerlink" title="各插件的详细功能介绍"></a>各插件的详细功能介绍</h2><h3 id="（一）喵喵插件"><a href="#（一）喵喵插件" class="headerlink" title="（一）喵喵插件"></a>（一）喵喵插件</h3><p>该插件由 <a target="_blank" rel="noopener" href="https://github.com/yoimiya-kokomi">Yoimiya Kokomi</a> 开发，是整个机器人中最核心的插件。</p>
+<ul>
+<li>第二、三项功能都来自该插件</li>
+<li>常用功能已在上文讲解</li>
+<li>更多功能可以使用 <code>#喵喵帮助</code> 查看</li>
+</ul>
+<hr>
+<h3 id="（二）图鉴插件"><a href="#（二）图鉴插件" class="headerlink" title="（二）图鉴插件"></a>（二）图鉴插件</h3><p>该插件由 <a target="_blank" rel="noopener" href="https://github.com/Nwflower">听语惊花</a> 开发，可查询原神、崩铁、绝区零的武器、角色、圣遗物等信息。</p>
+<p>获取图鉴图片后，可以根据相应的指令获取图鉴：</p>
+<table>
+<thead>
+<tr>
+<th>指令示例</th>
+<th>指令说明</th>
+<th>所属图鉴</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>#芙宁娜材料</code></td>
+<td>查询角色突破材料信息</td>
+<td>原神</td>
+</tr>
+<tr>
+<td><code>#黄金剧团</code></td>
+<td>查询圣遗物信息</td>
+<td>原神</td>
+</tr>
+<tr>
+<td><code>#苍古自由之誓</code></td>
+<td>查询武器信息</td>
+<td>原神</td>
+</tr>
+<tr>
+<td><code>#七圣珊瑚宫心海</code></td>
+<td>查询七圣卡牌（<strong>已停更</strong>）</td>
+<td>原神</td>
+</tr>
+<tr>
+<td><code>#甜甜花酿鸡</code></td>
+<td>查询食物信息（更新频率较慢）</td>
+<td>原神</td>
+</tr>
+<tr>
+<td><code>#无相之草</code></td>
+<td>查询敌对单位信息（更新频率较慢）</td>
+<td>原神</td>
+</tr>
+<tr>
+<td><code>#鸣草</code></td>
+<td>查询区域特产信息（更新频率较慢）</td>
+<td>原神</td>
+</tr>
+<tr>
+<td><code>*阮梅</code></td>
+<td>查询角色信息</td>
+<td>星穹铁道</td>
+</tr>
+<tr>
+<td><code>*阮梅攻略</code></td>
+<td>查询角色攻略指南</td>
+<td>星穹铁道</td>
+</tr>
+<tr>
+<td><code>*镜中故我</code></td>
+<td>查询光锥信息</td>
+<td>星穹铁道</td>
+</tr>
+<tr>
+<td><code>*不老者的仙舟</code></td>
+<td>查询遗器信息</td>
+<td>星穹铁道</td>
+</tr>
+<tr>
+<td><code>*外宇宙之冰</code></td>
+<td>查询敌对单位信息（更新频率较慢）</td>
+<td>星穹铁道</td>
+</tr>
+<tr>
+<td><code>%格莉丝·霍华德</code></td>
+<td>查询角色信息</td>
+<td>绝区零</td>
+</tr>
+<tr>
+<td><code>%加农转子</code></td>
+<td>查询音擎信息</td>
+<td>绝区零</td>
+</tr>
+<tr>
+<td><code>%大安比材料</code></td>
+<td>查询角色突破材料信息</td>
+<td>绝区零</td>
+</tr>
+<tr>
+<td>待添加…</td>
+<td>查询驱动盘信息</td>
+<td>绝区零</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="（三）Steam-插件"><a href="#（三）Steam-插件" class="headerlink" title="（三）Steam 插件"></a>（三）Steam 插件</h3><p>该插件由 <a target="_blank" rel="noopener" href="https://github.com/XasYer">XasYer</a> 开发，提供以下功能：</p>
+<ul>
+<li>Steam 群友状态播报</li>
+<li>Steam 库存</li>
+<li>Steam 愿望单</li>
+</ul>
+<p>具体功能请发送 <code>#steam帮助</code> 查看。</p>
+<hr>
+<h3 id="（四）小飞插件"><a href="#（四）小飞插件" class="headerlink" title="（四）小飞插件"></a>（四）小飞插件</h3><p>该插件由 <a target="_blank" rel="noopener" href="https://gitee.com/xfdown">小飞</a> 开发，功能如下：</p>
+<h4 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h4><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>命令示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>点歌</td>
+<td><code>#点歌</code> &#x2F; <code>#多选点歌</code> &#x2F; <code>#QQ点歌</code> &#x2F; <code>#网易点歌</code> &#x2F; <code>#酷我点歌</code> &#x2F; <code>#酷狗点歌</code> &#x2F; <code>#歌词</code> &#x2F; <code>#语音</code> &#x2F; <code>#高清语音</code></td>
+</tr>
+<tr>
+<td>天气</td>
+<td><code>#天气</code></td>
+</tr>
+<tr>
+<td>更新</td>
+<td><code>#小飞插件更新</code> &#x2F; <code>#小飞插件强制更新</code></td>
+</tr>
+<tr>
+<td>原神注册时间查询</td>
+<td><code>#原神注册时间</code></td>
+</tr>
+<tr>
+<td>通行证 CK 转米游社 CK</td>
+<td>用户只提交通行证 CK 时，插件自动生成米游社 CK 并完成绑定</td>
+</tr>
+<tr>
+<td>代发言（仅主人可用）</td>
+<td><code>#代@xx 指令</code> &#x2F; <code>#代203017966 指令</code></td>
+</tr>
+<tr>
+<td>帮助</td>
+<td><code>#小飞帮助</code></td>
+</tr>
+<tr>
+<td>版本</td>
+<td><code>#小飞版本</code></td>
+</tr>
+<tr>
+<td>设置</td>
+<td><code>#小飞设置</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="（五）微信个人号适配器"><a href="#（五）微信个人号适配器" class="headerlink" title="（五）微信个人号适配器"></a>（五）微信个人号适配器</h3><p>该插件由 <a target="_blank" rel="noopener" href="https://github.com/ethan42nd">ethan42nd</a>、<a target="_blank" rel="noopener" href="https://github.com/Misaka20002">Misaka20002</a>、<a target="_blank" rel="noopener" href="https://github.com/eggacheb">eggacheb</a> 开发。</p>
+<p>基于 TRSS-Yunzai 的微信个人号适配器插件，基于官方 ilink 协议，直接接入<a target="_blank" rel="noopener" href="https://cloud.tencent.cn/developer/article/2643772">微信 ClawBot 官方接口</a>，实现微信与 Yunzai 生态的合规、稳定消息互通。</p>
+<h4 id="功能状态"><a href="#功能状态" class="headerlink" title="功能状态"></a>功能状态</h4><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>状态</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>扫码登录</td>
+<td>✅</td>
+<td>不是登录你的微信，是创建一个你专用的 Bot 并连接我的服务器</td>
+</tr>
+<tr>
+<td>多账号管理</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td>私聊收发文本</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td>私聊收发图片</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td>私聊收发视频</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td>私聊收发文件</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td>私聊接收语音</td>
+<td>⚠️</td>
+<td>Bot 接收后转文字</td>
+</tr>
+<tr>
+<td>私聊发送语音</td>
+<td>⚠️</td>
+<td>Bot 以文件发送</td>
+</tr>
+<tr>
+<td>合并转发消息</td>
+<td>⚠️</td>
+<td>降级为多条消息发送</td>
+</tr>
+<tr>
+<td>接收引用消息多媒体</td>
+<td>⚠️</td>
+<td>多媒体为 <code>base64://</code> 数组</td>
+</tr>
+<tr>
+<td>接收消息多媒体</td>
+<td>⚠️</td>
+<td><code>e.img</code> 为 <code>base64://</code> 数组</td>
+</tr>
+<tr>
+<td>Bot「正在输入」状态</td>
+<td>⚠️</td>
+<td><code>e.send_typing</code> &#x2F; <code>e.stop_typing</code></td>
+</tr>
+</tbody></table>
+<h4 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h4><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>#微信个人号登录</code></td>
+<td>扫码登录新账号</td>
+</tr>
+<tr>
+<td><code>#微信个人号设置昵称</code></td>
+<td>设置插件中你的昵称</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="（六）绝区零插件"><a href="#（六）绝区零插件" class="headerlink" title="（六）绝区零插件"></a>（六）绝区零插件</h3><p>该插件由 <a target="_blank" rel="noopener" href="https://github.com/bietiaop">bietiaop</a> 开发。</p>
+<p>所有功能前缀（任选其一）：</p>
+<ul>
+<li><code>#zzz</code></li>
+<li><code>%</code></li>
+<li><code>#ZZZ</code></li>
+<li><code>#绝区零</code></li>
+</ul>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <span itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</span>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+            
+            
+                <div class="post-actions text-center clearfix" id="post-actions">
+                
+                    <a class="donate" href="javascript:;" onclick="krOpenDonateModal()"><i class="fa fa-bitcoin"></i> 打赏</a>
+                
+                
+                    <a class="share" href="javascript:;" onclick="krOpenShareModal()"><i class="fa fa-share-alt"></i> 分享</a>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a>, <a class="tag-none-link" href="/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/" rel="tag">机器人</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2026-06-19T11:47:07.471Z" itemprop="dateModified">最后编辑：2026-06-19</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" 你好，世界！" href="/posts/hello-world/"><i class="fa fa-angle-left"></i> 上一篇</a>
+            </div>
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" Cloudflare IP优选教程" href="/posts/Cloudflare IP优选教程/">下一篇 <i class="fa fa-angle-right"></i></a>
+            </div>
+            
+        </nav>
+    
+    
+        <div class="comment-post">
+            
+        </div>
+    
+</article>
+
+        
+
+            </section>
+
+            
+                
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/assets/logo.jpg" alt="Yagi Chirishio" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center">欢迎访问这个网站，希望能给您带来美好的体验。</p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                3
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                2
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                6
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类列表</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%A8%E6%96%B0%E4%BD%93%E9%AA%8C/">全新体验</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a><span class="category-list-count">2</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/CDN/" style="font-size: 0.6em;">CDN</a> <a href="/tags/Cloudflare/" style="font-size: 0.6em;">Cloudflare</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 0.6em;">教程</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/" style="font-size: 0.6em;">机器人</a> <a href="/tags/%E6%AC%A2%E8%BF%8E/" style="font-size: 0.6em;">欢迎</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/" style="font-size: 0.6em;">网络优化</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/posts/Cloudflare%20IP%E4%BC%98%E9%80%89%E6%95%99%E7%A8%8B/"><i class="fa fa-book"></i> Cloudflare IP优选教程</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/posts/%E4%BA%91%E5%B4%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"><i class="fa fa-book"></i> 云崽机器人使用教程</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/posts/hello-world/"><i class="fa fa-book"></i> 你好，世界！</a>
+            
+          
+        
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+            
+
+        
+
+                </div>
+    </div>
+</div>
+
+<footer>
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                            <li>
+                                <a href="https://github.com/kratos-rebirth" target="_blank" rel="nofollow">
+                                    <i class="fa fa-github"></i>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="/atom.xml" target="_blank" rel="nofollow">
+                                    <i class="fa fa-rss"></i>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2026 Chirishio的小站 版权所有.</li>
+                            <li>本站已在风雨中飘摇<span id="kr-since">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>自豪地使用 <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a> 主题</li>
+                            <li>站点由 <a href="https://github.com/Hoshino3073" target="_blank">Yagi Chirishio</a> 用 <i class="fa fa-heart" style="color:#d43f57"></i> 搭建</li>
+                        </div>
+                        <!-- 额外的追加注入项 -->
+                        
+                            <div>
+                                
+                                    <li>由 <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a> 强力驱动</li>
+                                
+                                    <li>在 <a href="https://github.io" target="_blank">Github Pages</a> 暖心托管</li>
+                                
+                                    <li><a href="https://icp.gov.moe/?keyword=20260820" target="_blank">萌ICP备20260820号</a></li>
+                                
+                            </div>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                <!-- 额外的追加注入项 -->
+                
+                
+                    <div class="box search-box">
+                        <a href="/search">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                <div class="box theme-box" id="theme-toggle">
+                    <span class="fa fa-adjust"></span>
+                </div>
+            </div>
+            <div id="gotop-box" class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+
+    <div id="kr-donate-modal" class="kr-modal">
+    <div class="kr-modal-bg" onclick="krCloseDonateModal()"></div>
+    <div class="kr-modal-content">
+        <div class="kr-modal-header">
+            <div class="kr-modal-icon">
+                <i class="fa fa-bitcoin"></i>
+            </div>
+            <div class="kr-modal-title">赞助喵</div>
+            <button class="kr-modal-close" onclick="krCloseDonateModal()">
+                <i class="fa fa-times-circle"></i>
+            </button>
+        </div>
+        <div class="kr-modal-body">
+            <div class="kr-donate-message">非常感谢您的喜欢！ <i class="fa fa-heart" style="color:#d43f57"></i></div>
+            <div class="kr-donate-qr" id="kr-donate-qr">
+                
+                    <img class="kr-donate-placeholder" src="https://dev.krt.moe/demo-assets/donate.webp" alt="赞助喵" />
+                
+            </div>
+            <div class="kr-donate-platforms">
+                
+                    
+                        <button class="kr-donate-platform-button" style="color: skyblue;" title="模拟支付" onclick="krDonateModalShowPlatformQR('example_payment', 'skyblue')">
+                            <i class="fa fa-credit-card"></i>
+                        </button>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+<script defer src="/js/kr-modal/donate.min.js"></script>
+
+
+
+
+    <div id="kr-share-modal" class="kr-modal">
+    <div class="kr-modal-bg" onclick="krCloseShareModal()"></div>
+    <div class="kr-modal-content">
+        <div class="kr-modal-header">
+            <div class="kr-modal-icon">
+                <i class="fa fa-share-alt"></i>
+            </div>
+            <div class="kr-modal-title">分享这一刻</div>
+            <button class="kr-modal-close" onclick="krCloseShareModal()">
+                <i class="fa fa-times-circle"></i>
+            </button>
+        </div>
+        <div class="kr-modal-body">
+            <div class="kr-share-message">让朋友们也来瞅瞅！</div>
+            <div class="kr-share-qr" id="kr-share-qr"></div>
+            <div class="kr-share-platforms">
+                
+                    <button class="kr-share-platform-button" style="color: #62b6e7;" title="喵窝" onclick="krShareModalOpenPlatform('https://nya.one/share?text=%3E%20$TITLE%0A%3E%0A%3E%20$SUMMARY%0A----%20$SITE%0A%0A$URL')">
+                        <svg fill="currentColor" width="18" height="18" viewBox="0 0 329 388"><path d="M0,36.226c0,-19.993 16.233,-36.226 36.226,-36.226c13.788,0 25.787,7.719 31.908,19.068l188.366,229.845l0,-111.259c-6.356,5.508 -14.645,8.843 -23.707,8.843c-19.994,0 -36.226,-16.232 -36.226,-36.226c-0,-8.551 2.968,-16.413 7.93,-22.613l-0.015,-0.013l56.614,-69.08c6.2,-11.073 18.047,-18.565 31.63,-18.565c19.994,0 36.227,16.233 36.227,36.226l-0,314.644c-0,19.994 -16.233,36.226 -36.227,36.226c-13.166,0 -24.701,-7.039 -31.044,-17.555l-189.229,-230.899l-0,212.228c-0,19.994 -16.233,36.226 -36.227,36.226c-19.993,0 -36.226,-16.232 -36.226,-36.226l0,-314.644Z" /></svg>
+                    </button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<script defer src="/js/kr-modal/share.min.js"></script>
+
+
+
+<!-- 额外的追加注入项 -->
+
+
+        <script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+  <script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+
+
+
+  <script defer src="/vendors/viewerjs@1.11.6/dist/viewer.min.js"></script>
+
+
+<script defer src="/js/kr-core.min.js"></script>
+
+
+  <script defer src="/js/kr-pjax.min.js"></script>
+
+
+<!-- 额外的追加注入项 -->
+
+
+    </body>
+</html>

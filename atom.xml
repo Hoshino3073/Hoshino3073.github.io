@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <author>
+    <name>Yagi Chirishio</name>
+  </author>
+  <generator uri="https://hexo.io/">Hexo</generator>
+  <id>https://blog.weiweian.top/</id>
+  <link href="https://blog.weiweian.top/" rel="alternate"/>
+  <link href="https://blog.weiweian.top/atom.xml" rel="self"/>
+  <rights>All rights reserved 2026, Yagi Chirishio</rights>
+  <subtitle>一些关于网络知识的分享</subtitle>
+  <title>Chirishio的小站</title>
+  <updated>2026-07-09T14:59:27.165Z</updated>
+  <entry>
+    <author>
+      <name>Yagi Chirishio</name>
+    </author>
+    <category term="教程" scheme="https://blog.weiweian.top/categories/%E6%95%99%E7%A8%8B/"/>
+    <category term="Cloudflare" scheme="https://blog.weiweian.top/tags/Cloudflare/"/>
+    <category term="CDN" scheme="https://blog.weiweian.top/tags/CDN/"/>
+    <category term="网络优化" scheme="https://blog.weiweian.top/tags/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/"/>
+    <content>
+      <![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>利用 Cloudflare 的“IP 优选”功能，可以为您的网站选择延迟最低的节点，大幅提升国内访问速度。</p><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul><li>一个已托管到 Cloudflare 的域名（例如 <code>example.com</code>）。</li><li>已开通 <strong>自定义主机名</strong> 功能的 Cloudflare 账号。</li></ul><hr><h2 id="第一步：获取优选域名或优选-IP"><a href="#第一步：获取优选域名或优选-IP" class="headerlink" title="第一步：获取优选域名或优选 IP"></a>第一步：获取优选域名或优选 IP</h2><p>您有两种选择，根据自身情况任选其一即可。</p><h3 id="方案一：使用优选域名"><a href="#方案一：使用优选域名" class="headerlink" title="方案一：使用优选域名"></a>方案一：使用优选域名</h3><ol><li>访问 <a href="https://cf.090227.xyz/">CloudFlare 优选域名</a>。</li><li>页面会列出多个域名及其延迟数据，<strong>选择对您运营商（电信&#x2F;联通&#x2F;移动）延迟最低的一个</strong>；如果不确定，直接选择列表中的第一个。</li><li>记录下该域名的值（例如 <code>cdn-xxx.cf.090227.xyz</code>）</li></ol><h3 id="方案二：使用优选-IP"><a href="#方案二：使用优选-IP" class="headerlink" title="方案二：使用优选 IP"></a>方案二：使用优选 IP</h3><ol><li>前往 <a href="https://github.com/XIU2/CloudflareSpeedTest">CloudflareSpeedTest</a> 下载适合您系统的工具。</li><li>按照项目 README 的说明运行测速，工具会自动筛选出<strong>速度最快且延迟最低</strong>的 IP 地址。</li><li>记录下该 IP 地址（IPv4 或 IPv6，视您的网络支持而定）。</li></ol><hr><h2 id="第二步：将优选结果接入您自己的域名"><a href="#第二步：将优选结果接入您自己的域名" class="headerlink" title="第二步：将优选结果接入您自己的域名"></a>第二步：将优选结果接入您自己的域名</h2><blockquote><p><strong>注意</strong>：以下操作均在 Cloudflare 仪表盘的 DNS 设置中进行，<strong>所有记录均不要开启代理（即保持小黄云为灰色状态）</strong>。</p></blockquote><h3 id="如果使用优选域名"><a href="#如果使用优选域名" class="headerlink" title="如果使用优选域名"></a>如果使用优选域名</h3><ul><li>添加一条 <strong>CNAME</strong> 记录：<ul><li>名称：<code>cdn</code>（或其他您喜欢的子域名，例如 <code>cdn.example.com</code>）</li><li>目标：填写第一步中获取的优选域名</li><li>代理状态：<strong>关闭</strong>（灰色云朵）</li></ul></li></ul><h3 id="如果使用优选-IP"><a href="#如果使用优选-IP" class="headerlink" title="如果使用优选 IP"></a>如果使用优选 IP</h3><ul><li>添加一条 <strong>A</strong> 记录（IPv4）或 <strong>AAAA</strong> 记录（IPv6）：<ul><li>名称：<code>cdn</code>（同样可自定义）</li><li>IP 地址：填写第一步中获取的优选 IP</li><li>代理状态：<strong>关闭</strong>（灰色云朵）</li></ul></li></ul><p>这样，您就拥有了一个指向最优节点的“中间域名”（例如 <code>cdn.example.com</code>）。</p><hr><h2 id="第三步：让-Cloudflare-使用优选结果（自定义主机名配置）"><a href="#第三步：让-Cloudflare-使用优选结果（自定义主机名配置）" class="headerlink" title="第三步：让 Cloudflare 使用优选结果（自定义主机名配置）"></a>第三步：让 Cloudflare 使用优选结果（自定义主机名配置）</h2><p>假设您的网站源服务器 IP 是 <code>1.1.1.1</code>，我们需要通过自定义主机名功能，将您真正的访问域名（如 <code>www.example.com</code>）指向这个优选节点。</p><ol><li><p><strong>设置基础代理域名</strong><br>在 DNS 中添加一条 A 记录：  </p><ul><li>名称：<code>123</code>（或任意，这里仅作示例）  </li><li>内容：<code>1.1.1.1</code>（您的源站 IP）  </li><li>代理状态：<strong>开启</strong>（橙色云朵）<br>这条记录只是为了提供一个开启代理的“源站”占位，之后自定义主机名会用到它。</li></ul></li><li><p><strong>将您想用来访问的域名指向优选节点</strong><br>添加一条 CNAME 记录：  </p><ul><li>名称：<code>www</code>（或您想使用的子域）  </li><li>目标：第二步中创建的 <code>cdn.example.com</code>  </li><li>代理状态：<strong>关闭</strong>（灰色云朵）</li></ul></li><li><p><strong>配置自定义主机名</strong>  </p><ul><li>进入 Cloudflare 控制台，在对应域名的菜单中找到 <strong>自定义主机名</strong>（Custom Hostnames）。</li><li>在 <strong>回退源（Fallback Origin）</strong> 处，随便填写一个已开启代理的域名（例如上面创建的 <code>123.example.com</code>），它仅作为占位，不需要能实际访问。</li><li>点击“添加自定义主机名”，填写：<ul><li><strong>主机名</strong>：<code>www.example.com</code>（外部看到的域名）</li><li><strong>源服务器</strong>：<code>123.example.com</code>（未经优选的域名）</li></ul></li><li>验证方式选择 <strong>HTTP 验证</strong>（Cloudflare 会自动完成验证；如果选 TXT 则需要手动添加解析记录）。</li></ul></li><li><p>等待几分钟，验证通过后，当您访问 <code>www.example.com</code> 时，流量就会经过您优选出的节点，速度得到优化。</p></li></ol><hr><h2 id="验证与生效"><a href="#验证与生效" class="headerlink" title="验证与生效"></a>验证与生效</h2><ul><li>您可以使用 <code>ping</code> 或 <code>dig</code> 命令检查 <code>www.example.com</code> 解析是否指向了您优选出的 IP&#x2F;域名。</li><li>也可通过在线测速工具对比前后的延迟变化。</li></ul><hr><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul><li>优选 IP 会因网络环境和时间而变化，建议定期重新测速并更新 DNS 记录。</li><li>自定义主机名功能需要绑定信用卡，但无需付费，free计划的用户可免费创建100个。</li><li>本文中的示例域名和 IP 请替换为您自己的真实信息。</li></ul>]]>
+    </content>
+    <id>https://blog.weiweian.top/posts/Cloudflare%20IP%E4%BC%98%E9%80%89%E6%95%99%E7%A8%8B/</id>
+    <link href="https://blog.weiweian.top/posts/Cloudflare%20IP%E4%BC%98%E9%80%89%E6%95%99%E7%A8%8B/"/>
+    <published>2026-07-05T16:00:00.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>利用 Cloudflare 的“IP 优选”功能，可以为您的网站选择延迟最低的节点，大幅提升国内访问速度。</p>
+<h2 id="准备工作]]>
+    </summary>
+    <title>Cloudflare IP优选教程</title>
+    <updated>2026-07-09T14:59:27.165Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Yagi Chirishio</name>
+    </author>
+    <category term="教程" scheme="https://blog.weiweian.top/categories/%E6%95%99%E7%A8%8B/"/>
+    <category term="机器人" scheme="https://blog.weiweian.top/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
+    <category term="教程" scheme="https://blog.weiweian.top/tags/%E6%95%99%E7%A8%8B/"/>
+    <content>
+      <![CDATA[<p>这是一篇针对群里的机器人的使用教程，由管理员亲自编写。</p><h2 id="指令前缀说明"><a href="#指令前缀说明" class="headerlink" title="指令前缀说明"></a>指令前缀说明</h2><ul><li>原神、通用指令以 <code>#</code> 开头</li><li>崩坏：星穹铁道以 <code>*</code> 开头</li><li>绝区零以 <code>%</code> 开头</li></ul><hr><h2 id="一、绑定-UID"><a href="#一、绑定-UID" class="headerlink" title="一、绑定 UID"></a>一、绑定 UID</h2><p>假设你的 UID 为 <code>123456789</code>，在群内或向机器人私聊发送：</p><ul><li><code>#绑定123456789</code></li><li>或 <code>#星铁绑定123456789</code></li></ul><p>稍后机器人应该会返回一张图片，此时说明绑定成功。</p><hr><h2 id="二、更新展柜中角色的面板数据"><a href="#二、更新展柜中角色的面板数据" class="headerlink" title="二、更新展柜中角色的面板数据"></a>二、更新展柜中角色的面板数据</h2><table><thead><tr><th>游戏</th><th>指令</th></tr></thead><tbody><tr><td>原神</td><td><code>#更新面板</code></td></tr><tr><td>崩坏：星穹铁道</td><td><code>#星铁更新面板</code></td></tr><tr><td>绝区零</td><td><code>%更新展柜面板</code></td></tr></tbody></table><blockquote><p><strong>注意</strong>：更新面板所使用的外部服务由 <a href="https://enka.network/">Enka</a> 提供，是否更新成功由服务是否正常决定。</p></blockquote><hr><h2 id="三、查看角色的面板数据"><a href="#三、查看角色的面板数据" class="headerlink" title="三、查看角色的面板数据"></a>三、查看角色的面板数据</h2><p>在使用第二点提到的指令后，你可以查看机器人回复的图片上的角色的面板。</p><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>假如你想要查看 <strong>胡桃</strong> 的面板，只需要发送：<br>胡桃面板</p><p>（该指令可不带 <code>#</code>）</p><h3 id="关于角色简称"><a href="#关于角色简称" class="headerlink" title="关于角色简称"></a>关于角色简称</h3><p>部分角色本名较长，机器人支持识别被广泛使用的简称或外号，例如：</p><table><thead><tr><th>本名</th><th>简称</th></tr></thead><tbody><tr><td>雷电将军</td><td>雷神</td></tr><tr><td>阿蕾奇诺</td><td>仆人</td></tr><tr><td>茜特菈莉</td><td>奶奶</td></tr></tbody></table><hr><h2 id="进阶教程（一）——-面板武器变换"><a href="#进阶教程（一）——-面板武器变换" class="headerlink" title="进阶教程（一）—— 面板武器变换"></a>进阶教程（一）—— 面板武器变换</h2><p>以 <strong>哥伦比娅</strong> 为例：</p><ul><li>假如你的少女目前是一命，你想知道二命的提升效果有多大，可以使用命令：</li></ul><p>#少女面板换二命</p><ul><li>如果你使用的武器不是专武，想知道带上专武有多大的提升，可以使用：</li></ul><p>#少女面板换专武</p><p>此命令也可用于更换任意该角色可佩戴的武器。</p><p>以 <strong>芙宁娜</strong> 为例，你想看看她带上神里绫人的专武「波乱月白经津」，但武器名字太难记，可以使用：<br>#水神面板换绫人专武</p><hr><h2 id="进阶教程（二）——-面板圣遗物变换"><a href="#进阶教程（二）——-面板圣遗物变换" class="headerlink" title="进阶教程（二）—— 面板圣遗物变换"></a>进阶教程（二）—— 面板圣遗物变换</h2><p>假设你的 UID 为 <code>123456789</code>，你正在查看你 <strong>丝柯克</strong> 的圣遗物，你对羽毛的词条不够满意。</p><p>正好看到了一位群友的丝柯克面板（UID 为 <code>987654321</code>），你注意到 TA 的羽毛词条更好，想知道如果自己用那个羽毛会是什么效果：<br>#丝柯克面板换987654321丝柯克羽毛</p><blockquote><p><strong>公式总结</strong>：<code>#角色名称 面板换 目标uid 角色名称 圣遗物位置</code></p></blockquote><hr><h2 id="四、点赞"><a href="#四、点赞" class="headerlink" title="四、点赞"></a>四、点赞</h2><p>在群里发送以下指令均可触发机器人的点赞功能：</p><ul><li><code>赞我</code></li><li><code>点赞</code></li></ul><hr><h2 id="各插件的详细功能介绍"><a href="#各插件的详细功能介绍" class="headerlink" title="各插件的详细功能介绍"></a>各插件的详细功能介绍</h2><h3 id="（一）喵喵插件"><a href="#（一）喵喵插件" class="headerlink" title="（一）喵喵插件"></a>（一）喵喵插件</h3><p>该插件由 <a href="https://github.com/yoimiya-kokomi">Yoimiya Kokomi</a> 开发，是整个机器人中最核心的插件。</p><ul><li>第二、三项功能都来自该插件</li><li>常用功能已在上文讲解</li><li>更多功能可以使用 <code>#喵喵帮助</code> 查看</li></ul><hr><h3 id="（二）图鉴插件"><a href="#（二）图鉴插件" class="headerlink" title="（二）图鉴插件"></a>（二）图鉴插件</h3><p>该插件由 <a href="https://github.com/Nwflower">听语惊花</a> 开发，可查询原神、崩铁、绝区零的武器、角色、圣遗物等信息。</p><p>获取图鉴图片后，可以根据相应的指令获取图鉴：</p><table><thead><tr><th>指令示例</th><th>指令说明</th><th>所属图鉴</th></tr></thead><tbody><tr><td><code>#芙宁娜材料</code></td><td>查询角色突破材料信息</td><td>原神</td></tr><tr><td><code>#黄金剧团</code></td><td>查询圣遗物信息</td><td>原神</td></tr><tr><td><code>#苍古自由之誓</code></td><td>查询武器信息</td><td>原神</td></tr><tr><td><code>#七圣珊瑚宫心海</code></td><td>查询七圣卡牌（<strong>已停更</strong>）</td><td>原神</td></tr><tr><td><code>#甜甜花酿鸡</code></td><td>查询食物信息（更新频率较慢）</td><td>原神</td></tr><tr><td><code>#无相之草</code></td><td>查询敌对单位信息（更新频率较慢）</td><td>原神</td></tr><tr><td><code>#鸣草</code></td><td>查询区域特产信息（更新频率较慢）</td><td>原神</td></tr><tr><td><code>*阮梅</code></td><td>查询角色信息</td><td>星穹铁道</td></tr><tr><td><code>*阮梅攻略</code></td><td>查询角色攻略指南</td><td>星穹铁道</td></tr><tr><td><code>*镜中故我</code></td><td>查询光锥信息</td><td>星穹铁道</td></tr><tr><td><code>*不老者的仙舟</code></td><td>查询遗器信息</td><td>星穹铁道</td></tr><tr><td><code>*外宇宙之冰</code></td><td>查询敌对单位信息（更新频率较慢）</td><td>星穹铁道</td></tr><tr><td><code>%格莉丝·霍华德</code></td><td>查询角色信息</td><td>绝区零</td></tr><tr><td><code>%加农转子</code></td><td>查询音擎信息</td><td>绝区零</td></tr><tr><td><code>%大安比材料</code></td><td>查询角色突破材料信息</td><td>绝区零</td></tr><tr><td>待添加…</td><td>查询驱动盘信息</td><td>绝区零</td></tr></tbody></table><hr><h3 id="（三）Steam-插件"><a href="#（三）Steam-插件" class="headerlink" title="（三）Steam 插件"></a>（三）Steam 插件</h3><p>该插件由 <a href="https://github.com/XasYer">XasYer</a> 开发，提供以下功能：</p><ul><li>Steam 群友状态播报</li><li>Steam 库存</li><li>Steam 愿望单</li></ul><p>具体功能请发送 <code>#steam帮助</code> 查看。</p><hr><h3 id="（四）小飞插件"><a href="#（四）小飞插件" class="headerlink" title="（四）小飞插件"></a>（四）小飞插件</h3><p>该插件由 <a href="https://gitee.com/xfdown">小飞</a> 开发，功能如下：</p><h4 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h4><table><thead><tr><th>功能</th><th>命令示例</th></tr></thead><tbody><tr><td>点歌</td><td><code>#点歌</code> &#x2F; <code>#多选点歌</code> &#x2F; <code>#QQ点歌</code> &#x2F; <code>#网易点歌</code> &#x2F; <code>#酷我点歌</code> &#x2F; <code>#酷狗点歌</code> &#x2F; <code>#歌词</code> &#x2F; <code>#语音</code> &#x2F; <code>#高清语音</code></td></tr><tr><td>天气</td><td><code>#天气</code></td></tr><tr><td>更新</td><td><code>#小飞插件更新</code> &#x2F; <code>#小飞插件强制更新</code></td></tr><tr><td>原神注册时间查询</td><td><code>#原神注册时间</code></td></tr><tr><td>通行证 CK 转米游社 CK</td><td>用户只提交通行证 CK 时，插件自动生成米游社 CK 并完成绑定</td></tr><tr><td>代发言（仅主人可用）</td><td><code>#代@xx 指令</code> &#x2F; <code>#代203017966 指令</code></td></tr><tr><td>帮助</td><td><code>#小飞帮助</code></td></tr><tr><td>版本</td><td><code>#小飞版本</code></td></tr><tr><td>设置</td><td><code>#小飞设置</code></td></tr></tbody></table><hr><h3 id="（五）微信个人号适配器"><a href="#（五）微信个人号适配器" class="headerlink" title="（五）微信个人号适配器"></a>（五）微信个人号适配器</h3><p>该插件由 <a href="https://github.com/ethan42nd">ethan42nd</a>、<a href="https://github.com/Misaka20002">Misaka20002</a>、<a href="https://github.com/eggacheb">eggacheb</a> 开发。</p><p>基于 TRSS-Yunzai 的微信个人号适配器插件，基于官方 ilink 协议，直接接入<a href="https://cloud.tencent.cn/developer/article/2643772">微信 ClawBot 官方接口</a>，实现微信与 Yunzai 生态的合规、稳定消息互通。</p><h4 id="功能状态"><a href="#功能状态" class="headerlink" title="功能状态"></a>功能状态</h4><table><thead><tr><th>功能</th><th>状态</th><th>注释</th></tr></thead><tbody><tr><td>扫码登录</td><td>✅</td><td>不是登录你的微信，是创建一个你专用的 Bot 并连接我的服务器</td></tr><tr><td>多账号管理</td><td>✅</td><td></td></tr><tr><td>私聊收发文本</td><td>✅</td><td></td></tr><tr><td>私聊收发图片</td><td>✅</td><td></td></tr><tr><td>私聊收发视频</td><td>✅</td><td></td></tr><tr><td>私聊收发文件</td><td>✅</td><td></td></tr><tr><td>私聊接收语音</td><td>⚠️</td><td>Bot 接收后转文字</td></tr><tr><td>私聊发送语音</td><td>⚠️</td><td>Bot 以文件发送</td></tr><tr><td>合并转发消息</td><td>⚠️</td><td>降级为多条消息发送</td></tr><tr><td>接收引用消息多媒体</td><td>⚠️</td><td>多媒体为 <code>base64://</code> 数组</td></tr><tr><td>接收消息多媒体</td><td>⚠️</td><td><code>e.img</code> 为 <code>base64://</code> 数组</td></tr><tr><td>Bot「正在输入」状态</td><td>⚠️</td><td><code>e.send_typing</code> &#x2F; <code>e.stop_typing</code></td></tr></tbody></table><h4 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h4><table><thead><tr><th>指令</th><th>说明</th></tr></thead><tbody><tr><td><code>#微信个人号登录</code></td><td>扫码登录新账号</td></tr><tr><td><code>#微信个人号设置昵称</code></td><td>设置插件中你的昵称</td></tr></tbody></table><hr><h3 id="（六）绝区零插件"><a href="#（六）绝区零插件" class="headerlink" title="（六）绝区零插件"></a>（六）绝区零插件</h3><p>该插件由 <a href="https://github.com/bietiaop">bietiaop</a> 开发。</p><p>所有功能前缀（任选其一）：</p><ul><li><code>#zzz</code></li><li><code>%</code></li><li><code>#ZZZ</code></li><li><code>#绝区零</code></li></ul>]]>
+    </content>
+    <id>https://blog.weiweian.top/posts/%E4%BA%91%E5%B4%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</id>
+    <link href="https://blog.weiweian.top/posts/%E4%BA%91%E5%B4%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+    <published>2026-06-18T14:52:56.000Z</published>
+    <summary>
+      <![CDATA[<p>这是一篇针对群里的机器人的使用教程，由管理员亲自编写。</p>
+<h2 id="指令前缀说明"><a href="#指令前缀说明" class="headerlink" title="指令前缀说明"></a>指令前缀说明</h2><ul>
+<li>原神、通用指令以 <cod]]>
+    </summary>
+    <title>云崽机器人使用教程</title>
+    <updated>2026-06-19T11:47:07.471Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Yagi Chirishio</name>
+    </author>
+    <category term="全新体验" scheme="https://blog.weiweian.top/categories/%E5%85%A8%E6%96%B0%E4%BD%93%E9%AA%8C/"/>
+    <category term="欢迎" scheme="https://blog.weiweian.top/tags/%E6%AC%A2%E8%BF%8E/"/>
+    <content>
+      <![CDATA[<p>欢迎使用 <code>Kratos : Rebirth</code> 这个我们精心打造的 Hexo 主题！希望能在接下来的旅途中与您相伴，共同创造出更多难以忘怀的美好体验。</p>]]>
+    </content>
+    <id>https://blog.weiweian.top/posts/hello-world/</id>
+    <link href="https://blog.weiweian.top/posts/hello-world/"/>
+    <published>2018-05-06T09:03:12.000Z</published>
+    <summary>
+      <![CDATA[<p>欢迎使用 <code>Kratos : Rebirth</code> 这个我们精心打造的 Hexo 主题！希望能在接下来的旅途中与您相伴，共同创造出更多难以忘怀的美好体验。</p>]]>
+    </summary>
+    <title>你好，世界！</title>
+    <updated>2026-08-04T02:34:16.696Z</updated>
+  </entry>
+</feed>
